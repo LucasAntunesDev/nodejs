@@ -26,5 +26,5 @@ app.put('/', (_, res) => {
     res.send('Você enviou uma requisição PUT!')
 })
 
-//definindo a porta em que o servidor vai funcionar
+//Definindo a porta em que o servidor vai funcionar
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}!`))

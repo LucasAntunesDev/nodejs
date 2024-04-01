@@ -1,17 +1,12 @@
 // index.js
-const express = require("express")
-const mysql = require('mysql2/promise')
+import express from "express"
+import { createConnection } from 'mysql2/promise'
 
 const PORT = 3000
 const app = express()
 
-/*Define a função como assíncrona, para que a constante *conn* funcione com o await */
 app.get('/', async (req, res) => {
-    /*Promessa => evento assíncrono, espera algo acontecer
-    * [antigamente] chama um callback com duas possibilidades : sucesso ou erro
-    * [hoje] usar async e await
-    */
-    const conn = await mysql.createConnection({
+    const conn = await createConnection({
         host: 'localhost',
         user: 'root',
         database: 'aula_01_04'
@@ -28,18 +23,6 @@ app.get('/', async (req, res) => {
         }))
     )
 
-    /**
-     **Desestruturação**: 
-     * no PHP:
-     * const vetor = [1,2,3]
-     * const a = vetor[0]
-     * const b = vetor[1]
-     * const c = vetor[2]
-     * 
-     * No JS:
-     * const [a,b,c] = vetor
-     * cosnt [a,b,c] = [1,2,3]
-     */
 })
 
 app.post('/', (req, res) => {

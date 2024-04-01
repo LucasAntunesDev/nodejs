@@ -42,6 +42,10 @@ app.get('/', async (req, res) => {
      */
 })
 
+app.post('/', (req, res) => {
+    res.send('Você enviou uma requisição POST')
+})
+
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}!`)
 })

@@ -17,14 +17,17 @@ app.get('/', async (req, res) => {
         database: 'aula_01_04'
     })
     const [resultado] = await conn.query({
-        sql : 'SELECT id, nome, sobrenome FROM pessoas'
+        sql: 'SELECT id, nome, sobrenome FROM pessoas'
     })
-    res.json(resultado.map(p => {
-        return {
-            id: p.id,
-            nomeCompleto: `${p.nome} ${p.sobrenome}`
-        }
-    }))
+
+    res.json(resultado.map(
+        ({ id, nome, sobrenome }) =>
+        ({
+            id, nome, sobrenome,
+            nomeCompleto: `${nome} ${sobrenome}`
+        }))
+    )
+
     /**
      **Desestruturação**: 
      * no PHP:
